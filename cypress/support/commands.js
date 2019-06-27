@@ -10,7 +10,15 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
+Cypress.Commands.add('login', (username, password) => {
+  //go to login page
+  cy.visit('/login', { timeout: 10000 });
+
+  // enter required fields and submit
+  cy.get('input[name="username"]').type(username);
+  cy.get('input[name="password"]').type(password);
+  cy.get('[data-cy=login]').click({ position: 'topLeft' });
+ });
 //
 //
 // -- This is a child command --
